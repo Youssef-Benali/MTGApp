@@ -1,0 +1,92 @@
+@page "/cards"
+@inject NavigationManager NavigationManager
+@inject MTGData CardsService
+@using System.ComponentModel.DataAnnotations
+@rendermode InteractiveServer
+
+@code {
+    public string? result;
+    public string? message = "51";
+
+    public string? searchTerm;
+    List<Card>? cards;
+    protected override async Task OnInitializedAsync()
+    {
+        cards = await CardsService.GetAllCards(1);
+    }
+    private async Task SearchCards()
+    {
+        if (searchTerm?.Length < 3)
+        {
+            message = "At least 3 characters";
+        }
+        else
+        {
+            cards = await CardsService.GetCardsByName(searchTerm);
+        }
+    }
+
+    private void NavigateToTargetPage(long id)
+    {
+        long Id = id;
+        NavigationManager.NavigateTo($"/cards/{Id}");
+    }
+
+    private SearchInput SearchModel = new SearchInput();
+
+    private async Task HandleValidSearch()
+    {
+        // Handle valid form submission
+        string searchInput = SearchModel.SearchBarInput;
+
+        cards = await CardsService.GetCardsByName(searchInput);
+    }
+}
+
+<h1>Cards</h1>
+
+
+@* <input type="text" @bind="searchTerm" placeholder="Enter card name" />
+<button @onclick="SearchCards"> Search </button> *@
+
+
+<EditForm Model="@SearchModel" OnValidSubmit="@HandleValidSearch">
+    <DataAnnotationsValidator />
+    @* <ValidationSummary /> *@
+
+    <div class="form-group">
+        <label for="textInput">Text Input:</label>
+        <InputText id="SearchBarInput" class="form-control" @bind-Value="SearchModel.SearchBarInput" />
+        <ValidationMessage For="@(() => SearchModel.SearchBarInput)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</EditForm>
+
+
+
+@if (cards == null)
+{
+    <span>Loading...</span>
+}
+else
+{
+    <div class="cards--grid">
+        @foreach (var card in cards)
+        {
+            if (card.OriginalImageUrl == null)
+            {
+                <img src="assets/notfound.png" alt="oui" />
+            }
+            else
+            {
+                <div class="card">
+                    <img @onclick="() => NavigateToTargetPage(card.Id)" src="@card.OriginalImageUrl" alt="oui" />
+                    <p>@card.Id</p>
+                    <p class="card--description">@card.Text</p>
+                    <LikedCardButton id="@card.Id" />
+                </div>
+            }
+        }
+    </div>
+}

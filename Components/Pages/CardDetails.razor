@@ -1,0 +1,36 @@
+@page "/cards/{id:long}"
+@inject MTGData CardsService
+
+@code {
+    [Parameter]
+    public long Id { get; set; }
+
+    Card? myCard;
+
+    protected override void OnParametersSet()
+    {
+        // You can add any logic that needs to run when the parameters are set here.
+        base.OnParametersSet();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        myCard = await CardsService.GetCardById(Id);
+    }
+}
+
+@if (myCard != null)
+{
+    <p>ID: @Id</p>
+    <p>Name: @myCard.Name</p>
+    <p>Name: @myCard.ManaCost</p>
+    <p>Name: @myCard.ConvertedManaCost</p>
+    <p>Name: @myCard.OriginalType</p>
+    <p>Name: @myCard.Power</p>
+    <p>Name: @myCard.Text</p>
+    <img src="@myCard.OriginalImageUrl">
+}
+else
+{
+    <p>Card not found.</p>
+}
