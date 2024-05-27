@@ -1,9 +1,27 @@
 @page "/collection"
+@inject MTGData CardsService
 
 
 <h1>Collection</h1>
 
 
-@code{
-    
+@if (cards == null)
+{
+    <span>Loading...</span>
+}
+else
+{
+    @foreach (var card in cards)
+    {
+        <p>@card.Name</p>
+    }
+}
+
+
+@code {
+    List<Card>? cards;
+    protected override async Task OnInitializedAsync()
+    {
+        cards = await CardsService.GetLikedCard();
+    }
 }

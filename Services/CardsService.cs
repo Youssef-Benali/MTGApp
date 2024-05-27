@@ -45,5 +45,14 @@ namespace MTGApp.Services
 
             return card;
         }
+
+        public async Task<List<Card>> GetLikedCard()
+        {
+            var cards = await _context.Cards
+            .Where(c => c.Liked == true)
+            .ToListAsync();
+
+            return cards;
+        }
     }
 }
