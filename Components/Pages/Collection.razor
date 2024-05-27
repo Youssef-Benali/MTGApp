@@ -11,10 +11,16 @@
 }
 else
 {
-    @foreach (var card in cards)
-    {
-        <p>@card.Name</p>
-    }
+    <div class="cards--grid">
+        @foreach (var card in cards)
+        {
+            <div class="card">
+                <img src="@card.OriginalImageUrl" alt="oui" />
+                <p>@card.Id</p>
+                <p class="card--description">@card.Text</p>
+            </div>
+        }
+    </div>
 }
 
 

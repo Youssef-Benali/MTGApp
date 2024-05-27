@@ -58,8 +58,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/testboy/Desktop/MTGApp/Shared/LikedCardButton.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExpa2VkQ2FyZEJ1dHRvbi5yYXpvcg==
+[C:/Users/testboy/Desktop/MTGApp/Shared/LikeButton.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExpa2VCdXR0b24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/testboy/Desktop/MTGApp/Components/Layout/MainLayout.razor]

@@ -8,5 +8,7 @@ namespace MTGApp.Services
         Task<List<Card>> GetCardsByName(string name);
         Task<Card> GetCardById(long id);
         Task<List<Card>> GetLikedCard();
+
+        Task LikeCard(long id);
     }
 }

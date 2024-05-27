@@ -54,5 +54,22 @@ namespace MTGApp.Services
 
             return cards;
         }
+
+        public async Task LikeCard(long id)
+        {
+            var card = await _context.Cards.Where(c => c.Id == id).FirstAsync();
+
+            if (card.Liked == null || card.Liked == false)
+            {
+                card.Liked = true;
+            }
+            else
+            {
+                card.Liked = false;
+            }
+
+            await _context.SaveChangesAsync();
+            Console.WriteLine($"changes saved to the database.");
+        }
     }
 }

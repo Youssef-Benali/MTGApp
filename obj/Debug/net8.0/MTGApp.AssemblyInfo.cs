@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MTGApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e32d47f1f9953c7a7933172bb04abfd37ebeca0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+195463cb5303f0f5fc9676e02425d8c1ad32825f")]
 [assembly: System.Reflection.AssemblyProductAttribute("MTGApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MTGApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

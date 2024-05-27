@@ -1,20 +1,16 @@
-@using MTGApp.Models
 @using MTGApp.Services
+@inject MTGData CardsService
 
 @code {
     [Parameter]
     public long Id { get; set; }
 
 
- 
-    public void AddCard()
-    {
-        
-    }
+   
 }
 
 
-<button @onclick="AddCard">
+<button @onclick="() => LikeCard">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart"
         viewBox="0 0 16 16">
         <path

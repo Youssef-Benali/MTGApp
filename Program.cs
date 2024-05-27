@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+
 builder.Services.AddDbContext<DBContext>(options => 
     options.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
 

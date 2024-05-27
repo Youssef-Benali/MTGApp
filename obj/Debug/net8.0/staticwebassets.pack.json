@@ -9,6 +9,14 @@
       "PackagePath": "staticwebassets\\app.css"
     },
     {
+      "Id": "C:\\Users\\testboy\\Desktop\\MTGApp\\wwwroot\\assets\\heart-fill.svg",
+      "PackagePath": "staticwebassets\\assets\\heart-fill.svg"
+    },
+    {
+      "Id": "C:\\Users\\testboy\\Desktop\\MTGApp\\wwwroot\\assets\\heart.svg",
+      "PackagePath": "staticwebassets\\assets\\heart.svg"
+    },
+    {
       "Id": "C:\\Users\\testboy\\Desktop\\MTGApp\\wwwroot\\assets\\notfound.png",
       "PackagePath": "staticwebassets\\assets\\notfound.png"
     },

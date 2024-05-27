@@ -41,6 +41,12 @@
 
         cards = await CardsService.GetCardsByName(searchInput);
     }
+
+    public async Task LikeCard(long Id)
+    {
+        Console.WriteLine($"LikeCard method called for card Id: {Id}");
+        await CardsService.LikeCard(Id);
+    }
 }
 
 <h1>Cards</h1>
@@ -80,12 +86,33 @@ else
             }
             else
             {
-                <div class="card">
-                    <img @onclick="() => NavigateToTargetPage(card.Id)" src="@card.OriginalImageUrl" alt="oui" />
-                    <p>@card.Id</p>
-                    <p class="card--description">@card.Text</p>
-                    <LikedCardButton id="@card.Id" />
-                </div>
+                if (card.Liked == null || card.Liked == false)
+                {
+                    <div class="card">
+                        <img @onclick="() => NavigateToTargetPage(card.Id)" src="@card.OriginalImageUrl" alt="oui" />
+                        <p>@card.Id</p>
+                        <p class="card--description">@card.Text</p>
+
+
+                        <button class="like-btn" @onclick="(e) => LikeCard(card.Id)">
+                            <img src="assets/heart.svg" alt="Heart icon">
+                        </button>
+                    </div>
+                }
+                else
+                {
+                    <div class="card">
+                        <img @onclick="() => NavigateToTargetPage(card.Id)" src="@card.OriginalImageUrl" alt="oui" />
+                        <p>@card.Id</p>
+                        <p class="card--description">@card.Text</p>
+
+
+                        <button class="like-btn" @onclick="(e) => LikeCard(card.Id)">
+                            <img src="assets/heart-fill.svg" alt="Heart icon">
+                        </button>
+                    </div>
+
+                }
             }
         }
     </div>
